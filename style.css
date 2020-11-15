@@ -67,4 +67,5 @@ button:hover {
     font-size: 2rem;
     padding: 2px;
     padding-right: 5px;
+    overflow: hidden;
 }

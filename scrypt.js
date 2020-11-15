@@ -76,15 +76,15 @@ let operator = "";
 function populateDisplay(e){
     if(typeof storedValue == "string" ) {
         displayValue = displayValue + e.toElement.innerHTML;
-        if (displayValue.length > 13) {
-            displayValue=displayValue.substring(0,13);
+        if (displayValue.length > 16) {
+            displayValue=displayValue.substring(0,16);
         }
         display.textContent= Number(displayValue);
     }else {
         
         displayValue1 = displayValue1 + e.toElement.innerHTML;
-        if (displayValue1.length > 13) {
-            displayValue1=displayValue1.substring(0,13);
+        if (displayValue1.length > 15) {
+            displayValue1=displayValue1.substring(0,15);
         }
         display.textContent = displayValue1;
         storedValue1 =Number(displayValue1);
