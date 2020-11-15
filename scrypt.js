@@ -75,14 +75,14 @@ let operator = "";
 
 function populateDisplay(e){
     if(typeof storedValue == "string" ) {
-        displayValue = displayValue + e.toElement.textContent;
+        displayValue = displayValue + e.target.textContent;
         if (displayValue.length > 16) {
             displayValue=displayValue.substring(0,16);
         }
         display.textContent= Number(displayValue);
     }else {
         
-        displayValue1 = displayValue1 + e.toElement.textContent;
+        displayValue1 = displayValue1 + e.target.textContent;
         if (displayValue1.length > 15) {
             displayValue1=displayValue1.substring(0,15);
         }
@@ -110,17 +110,17 @@ function addOperator(e) {
         operate (operator, storedValue, storedValue1)
     }
     storedValue = Number(displayValue);
-    console.log(e.toElement.innerHTML);
-    if (e.toElement.innerHTML == "+") {
+    console.log(e.target.textContent);
+    if (e.target.textContent == "+") {
         operator = add;
         console.log(operator);
-    }else if (e.toElement.innerHTML == "-") {
+    }else if (e.target.textContent == "-") {
         operator =subtract;
         console.log(operator);
-    }else if (e.toElement.innerHTML == "*") {
+    }else if (e.target.textContent == "*") {
         operator =multiply;
         console.log(operator);
-    }else if (e.toElement.innerHTML == "/") {
+    }else if (e.target.textContent == "/") {
         operator =divide;
         console.log(operator);
     }
