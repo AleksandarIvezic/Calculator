@@ -75,14 +75,14 @@ let operator = "";
 
 function populateDisplay(e){
     if(typeof storedValue == "string" ) {
-        displayValue = displayValue + e.toElement.innerHTML;
+        displayValue = displayValue + e.toElement.textContent;
         if (displayValue.length > 16) {
             displayValue=displayValue.substring(0,16);
         }
         display.textContent= Number(displayValue);
     }else {
         
-        displayValue1 = displayValue1 + e.toElement.innerHTML;
+        displayValue1 = displayValue1 + e.toElement.textContent;
         if (displayValue1.length > 15) {
             displayValue1=displayValue1.substring(0,15);
         }
