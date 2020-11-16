@@ -4,17 +4,20 @@ body {
    margin: 0, auto;
    padding:0;
 }
+
 header {
     color: white;
+    padding-top: 20px;
+    padding-bottom: 10px;
 }
+
 .display {
-    background-color: wheat;
-    
-    
+    background-color: wheat;    
     border-radius: 10px;
     margin-bottom: 20px;
     
 }
+
 .container {
     width: 70%;
     max-width: 500px;
@@ -32,9 +35,11 @@ button {
   font-size: large;
   margin-top: 2px;
 }
+
 button:hover {
     opacity: 0.8;
 }
+
 .numbers button {
     width:30%;
     height: 30px;
@@ -52,9 +57,11 @@ button:hover {
 
     
 }
+
 #c {
     background-color: hotpink;
 }
+
 #\= {
     width: 80%;
     background-color: #554a4a;
@@ -63,6 +70,7 @@ button:hover {
     
     font-size: xx-large;
 }
+
 .display p {
     text-align: end;
     font-size: 2rem;
