@@ -16,7 +16,8 @@ header {
     
 }
 .container {
-    width: 60%;
+    width: 70%;
+    max-width: 500px;
     border: 10px solid greenyellow;
     display:grid;
     margin:0 auto;
@@ -32,7 +33,7 @@ button {
   margin-top: 2px;
 }
 button:hover {
-    opacity: 0.9;
+    opacity: 0.8;
 }
 .numbers button {
     width:30%;
