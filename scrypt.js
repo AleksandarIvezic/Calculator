@@ -42,8 +42,13 @@ function multiply (n1, n2) {
 	return n1 * n2;
 }
 function divide (n1,n2) {
-    return n1/n2;
-}
+    // disable dividing with 0
+    if ( n2 == 0) {
+        return "Don't do that! :)"
+    }else {
+        return n1/n2;}
+    }
+    
 
 function power(num, p) {
 	let n = num;
@@ -56,14 +61,17 @@ function power(num, p) {
 // filling display with 
 
 function populateDisplay(e){
-    
+
     // not allow concatenate 0 with numbers
     if ( displayValue == "0" && e.target.textContent !== "."){
         displayValue = "";
-    }   
+    }  
+    if ( displayValue1 == "0" && e.target.textContent !== "." ){
+        displayValue1 = "";
+    }  
 
     // filling display with numbers
-
+    buttoncoma = document.getElementById(".").addEventListener("click", populateDisplay);
     if(typeof storedValue == "string" ) {
         displayValue = displayValue + e.target.textContent;
         if (displayValue.length > 16) {
@@ -74,7 +82,8 @@ function populateDisplay(e){
             displayValue=displayValue.substring(0,11);
         }
         display.textContent= displayValue;
-        
+        // not allow making 2 comas
+        onlyOneComma ();
     }
     else {
         
@@ -88,12 +97,11 @@ function populateDisplay(e){
         }
         display.textContent = displayValue1;
         storedValue1 =Number(displayValue1);
-    }  
-    
-    // not allow making 2 comas
-    if (displayValue.match(/\./)) {
-        buttoncoma = document.getElementById(".").removeEventListener("click", populateDisplay);
+        // not allow making 2 comas
+        onlyOneComma ();
    }
+ 
+    
 }
 
 function addOperator(e) {
@@ -132,6 +140,13 @@ function operate(opt, num1, num2) {
     storedValue= Number(displayValue);
     displayValue1="";
 }
+
 function clear(e) {
     location.reload();
+}
+
+function onlyOneComma (){
+    if (display.textContent.match(/\./)){
+        buttoncoma= document.getElementById(".").removeEventListener("click", populateDisplay)
+    }
 }
