@@ -11,7 +11,7 @@ const button7 = document.getElementById("7").addEventListener("click", populateD
 const button8 = document.getElementById("8").addEventListener("click", populateDisplay);
 const button9 = document.getElementById("9").addEventListener("click", populateDisplay);
 const button0 = document.getElementById("0").addEventListener("click", populateDisplay);
-const buttoncoma = document.getElementById(".").addEventListener("click", populateDisplay);
+let buttoncoma = document.getElementById(".").addEventListener("click", populateDisplay);
 const buttonc = document.getElementById("c").addEventListener("click", clear);
 const buttonplus = document.getElementById("+").addEventListener("click", addOperator);
 const buttonminus = document.getElementById("-").addEventListener("click", addOperator);
@@ -53,7 +53,17 @@ function power(num, p) {
 	return n;
 }
 
+// filling display with 
+
 function populateDisplay(e){
+    
+    // not allow concatenate 0 with numbers
+    if ( displayValue == "0" && e.target.textContent !== "."){
+        displayValue = "";
+    }   
+
+    // filling display with numbers
+
     if(typeof storedValue == "string" ) {
         displayValue = displayValue + e.target.textContent;
         if (displayValue.length > 16) {
@@ -63,8 +73,10 @@ function populateDisplay(e){
         if(window.outerWidth < 500) {
             displayValue=displayValue.substring(0,11);
         }
-        display.textContent= Number(displayValue);
-    }else {
+        display.textContent= displayValue;
+        
+    }
+    else {
         
         displayValue1 = displayValue1 + e.target.textContent;
         if (displayValue1.length > 15) {
@@ -76,7 +88,12 @@ function populateDisplay(e){
         }
         display.textContent = displayValue1;
         storedValue1 =Number(displayValue1);
-    }     
+    }  
+    
+    // not allow making 2 comas
+    if (displayValue.match(/\./)) {
+        buttoncoma = document.getElementById(".").removeEventListener("click", populateDisplay);
+   }
 }
 
 function addOperator(e) {
