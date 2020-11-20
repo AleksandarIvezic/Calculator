@@ -3,6 +3,7 @@ body {
     background-color:#003865 ;
    margin: 0, auto;
    padding:0;
+   
 }
 
 header {
@@ -15,7 +16,7 @@ header {
     background-color: wheat;    
     border-radius: 10px;
     margin-bottom: 20px;
-    
+    overflow:hidden;
 }
 
 .container {
@@ -27,6 +28,7 @@ header {
     background: #82819b;
     padding: 30px;
     border-radius: 10px;
+    overflow:hidden;
 }
 
 button {

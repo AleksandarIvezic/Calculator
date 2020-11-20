@@ -25,7 +25,7 @@ let displayValue1 = "";
 let storedValue = "";
 let storedValue1 = "";
 let operator = "";
-const container= document.getElementById("container");
+
 
 //Functions
 
@@ -41,14 +41,14 @@ function subtract (n1, n2) {
 function multiply (n1, n2) {
 	return n1 * n2;
 }
+
 function divide (n1,n2) {
     // disable dividing with 0
     if ( n2 == 0) {
-        return "Don't do that! :)"
+        return "ops! 😵";
     }else {
         return n1/n2;}
-    }
-    
+}    
 
 function power(num, p) {
 	let n = num;
@@ -70,16 +70,17 @@ function populateDisplay(e){
         displayValue1 = "";
     }  
 
-    // filling display with numbers
+    // enabling coma if it's disabled
     buttoncoma = document.getElementById(".").addEventListener("click", populateDisplay);
-    if(typeof storedValue == "string" ) {
+
+    // filling display with numbers    
+    if(typeof storedValue == "string") {
         displayValue = displayValue + e.target.textContent;
-        if (displayValue.length > 16) {
-            
-            displayValue=displayValue.substring(0,16);
+        if (displayValue.length > 15) {            
+            displayValue=displayValue.substring(0,15);
         }
-        if(window.outerWidth < 500) {
-            displayValue=displayValue.substring(0,11);
+        if(window.outerWidth <= 500) {
+            displayValue=displayValue.substring(0,10);
         }
         display.textContent= displayValue;
         // not allow making 2 comas
@@ -107,7 +108,7 @@ function populateDisplay(e){
 function addOperator(e) {
     console.log(storedValue, storedValue1);
 
-    if (storedValue, storedValue1) {
+    if (storedValue, displayValue1) {
         operate (operator, storedValue, storedValue1)
     }
     storedValue = Number(displayValue);
@@ -139,6 +140,7 @@ function operate(opt, num1, num2) {
     displayValue=  display.textContent;
     storedValue= Number(displayValue);
     displayValue1="";
+    dealBigNumbers();
 }
 
 function clear(e) {
@@ -149,4 +151,53 @@ function onlyOneComma (){
     if (display.textContent.match(/\./)){
         buttoncoma= document.getElementById(".").removeEventListener("click", populateDisplay)
     }
+}
+
+function dealBigNumbers() {
+    let result = display.textContent;        
+    let resultArray = result.split("");
+    let commaIndex= resultArray.findIndex(el => el == ".");
+    let chComa = resultArray.filter(el => el != ".");
+    chComa.splice( 1, 0, ".");
+    let newRes = chComa.join("");
+    let finRes = newRes.substring(0,12); 
+
+    //limit number size display 
+    if ( result >= 10000000000000000000 ){
+        display.textContent= "infinite!";
+        return;
+    }
+    // making some responsiveness
+    if (window.outerWidth>500) {
+        if (result.length>15 && commaIndex < 12 && commaIndex > 0) {    
+            display.textContent = display.textContent.substring(0,15)
+        }else if (result.length>15 && (commaIndex >= 12 || commaIndex < 0)){
+            // deal with integers and decimal numbers
+            if (commaIndex< 0) {
+                display.textContent = finRes + "e" + "+" +(result.length-1);
+            }else {
+                display.textContent = finRes + "e" + "+" +(commaIndex-1);
+            }
+            
+        }else {
+            return;
+        }
+    }else{
+        if (result.length>9 && commaIndex < 7 && commaIndex > 0) {   
+            // deal with e+21 numbers
+            display.textContent = result.substring(0,10);
+        }else if (result.length>9 && (commaIndex >= 7 || commaIndex < 0)) {
+            // deal with integers and decimal numbers
+            if (commaIndex< 0) {
+                finRes = newRes.substring(0,7);
+                display.textContent = finRes + "e" + "+" +(result.length-1);
+            }else {
+                finRes = newRes.substring(0,7);
+                display.textContent = finRes + "e" + "+" +(commaIndex-1);
+            }
+        }else {
+            return;
+        }
+    }
+    
 }
