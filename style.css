@@ -1,9 +1,37 @@
+* {
+    box-sizing: border-box;
+}
 body {
     text-align: center;
     background-color:#003865 ;
-   margin: 0, auto;
-   padding:0;
+   margin: 0;
+   padding: 0;
    
+}
+
+.row::after {
+    display: block;
+    clear: both;
+    content: "";
+}
+.col-1 {width: 8.33%;} /* 12*8.33 =100*/
+.col-2 {width: 16.66%;}
+.col-3 {width: 23%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 73%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+[class*=col-] {
+    padding: 15px;
+    /* float: left; */
+    border: 1px solid black;
+    
 }
 
 header {
@@ -12,71 +40,86 @@ header {
     padding-bottom: 10px;
 }
 
-.display {
-    background-color: wheat;    
-    border-radius: 10px;
-    margin-bottom: 20px;
-    overflow:hidden;
-}
-
 .container {
     width: 70%;
     max-width: 500px;
-    border: 10px solid greenyellow;
+    border: greenyellow 2px solid;
     display:grid;
     margin:0 auto;
     background: #82819b;
     padding: 30px;
     border-radius: 10px;
     overflow:hidden;
+   
 }
 
-button {
-    border-radius: 5px;
-    background-color: rgb(192, 176, 176);
-  font-size: large;
-  margin-top: 2px;
-}
-
-button:hover {
+.btn:hover {
     opacity: 0.8;
 }
 
-.numbers button {
-    width:30%;
-    height: 30px;
-    grid-auto-flow: column;
-   
-}
-
-.functions button {
-    display: inline-grid;
+.btn {
+    border:none;
     background-color: #5f5e50;
     color: rgb(218, 193, 193);
-    width: 22%;
-    
+    /* width: 2%; */
+    border-radius: 10px;
     font-size: xx-large;
-
+    margin:2px;
     
+}
+.num {
+    background-color: #003865;
+}
+ .img {
+     vertical-align: middle;
+    width: 100%;
+    height: 100%; 
+       
 }
 
 #c {
-    background-color: hotpink;
+    background-color: #DF2C32;
 }
 
 #\= {
-    width: 80%;
+    
     background-color: #554a4a;
     color: rgb(248, 241, 241);
    
-    
-    font-size: xx-large;
 }
 
-.display p {
+.display{    
+    background-color: wheat;    
+    border-radius: 10px;
+    overflow:hidden;    
+}
+
+#display {
     text-align: end;
-    font-size: 2rem;
-    padding: 2px;
+    font-size: 3rem;
+    padding: 2px;    
     padding-right: 5px;
     overflow: hidden;
+    margin: 0;
 }
+.keyboard {
+    margin-top: 20px;
+}
+#minidisplay{
+    margin: 0;
+    padding-top: 3px;
+    margin-left: auto;
+    text-align: end;
+    padding-right: 10px;
+    color: #19466F;
+    background: #bbff003b;
+    font-size: 1rem;
+}
+@media only screen and (max-width: 687px) {
+    .container {
+        width: 98%;
+    }
+    
+    .col-3{width: 20%;}
+    .col-9{width: 65%;}
+ }

@@ -14,32 +14,39 @@
     <div class="container" id="container">
         <div class="calculator">
             <div class="display" >
+                <p id="minidisplay"></p>
                 <p id="display">0</p>
             </div>
-            <div class="keyboard">
-                <div class="numbers">
-                    
-                    <button id="1">1</button>
-                    <button id="2">2</button>
-                    <button id="3">3</button>
-                    <button id="4">4</button>
-                    <button id="5">5</button>
-                    <button id="6">6</button>
-                    <button id="7">7</button>
-                    <button id="8">8</button>
-                    <button id="9">9</button>
-                    <button id="0">0</button>
-                    <button id=".">.</button>
-                    <button id="c">C</button>
-                </div>
-                <div class="functions">
-                    <button id="+">+</button>
-                    <button id="-">-</button>
-                    <button id="/">/</button>
-                    <button id="*">*</button>
-                    
-                </div>
-                <button id="=">=</button>
+            <div class="keyboard" >
+                
+                    <div class="row">
+                        <button class="col-3 btn num" id="1">1</button>
+                        <button class="col-3 btn num" id="2">2</button>
+                        <button class="col-3 btn num" id="3">3</button>
+                        <button class="col-3 btn" id="c">C</button>
+                    </div>
+                    <div class="row">
+                        <button class="col-3 btn num" id="4">4</button>
+                        <button class="col-3 btn num" id="5">5</button>
+                        <button class="col-3 btn num" id="6">6</button>
+                        <button class="col-3 btn" id="+">+</button>
+                    </div>
+                    <div class="row">
+                        <button class="col-3 btn num" id="7">7</button>
+                        <button class="col-3 btn num" id="8">8</button>
+                        <button class="col-3 btn num" id="9">9</button>
+                        <button class="col-3 btn"id="-">-</button>
+                    </div>
+                    <div class="row">
+                        <button class="col-3 btn num" id="0">0</button>
+                        <button class="col-3 btn num" id=".">.</button>
+                        <button class="col-3 btn num" id="back"><img  class="img" src="img/backspacered.png" alt=""></button>
+                        <button class="col-3 btn" id="/">/</button>
+                    </div>
+                    <div class="row">
+                        <button class="col-9 btn" id="=">=</button>
+                        <button class="col-3 btn" id="*">*</button>
+                    </div>                
             </div>
         </div>
     </div>

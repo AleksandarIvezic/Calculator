@@ -18,6 +18,7 @@ const buttonminus = document.getElementById("-").addEventListener("click", addOp
 const buttondivide = document.getElementById("/").addEventListener("click", addOperator);
 const buttonmulti = document.getElementById("*").addEventListener("click", addOperator);
 const buttonequal = document.getElementById("=").addEventListener("click", operate);
+const buttonbackspace = document.getElementById("back").addEventListener("click", backspace);
 
 let display = document.getElementById("display");
 let displayValue = display.textContent;
@@ -56,6 +57,24 @@ function power(num, p) {
 		n = n * num;
 	}
 	return n;
+}
+
+function backspace (){
+    let x =display.textContent.split("");
+    x.pop();
+    x = x.join("");
+    if (x.length <1) {
+        display.textContent = "0";
+        
+    }else {
+         display.textContent = x;
+    }
+    if(typeof storedValue == "string"){
+        displayValue= display.textContent;
+    }else{
+        displayValue1= display.textContent;
+        storedValue1 =Number(displayValue1);
+    }    
 }
 
 // filling display with 
@@ -106,36 +125,29 @@ function populateDisplay(e){
 }
 
 function addOperator(e) {
-    console.log(storedValue, storedValue1);
+    // console.log(storedValue, storedValue1);
 
     if (storedValue, displayValue1) {
         operate (operator, storedValue, storedValue1)
     }
     storedValue = Number(displayValue);
-    console.log(e.target.textContent);
+    
     if (e.target.textContent == "+") {
         operator = add;
-        console.log(operator);
     }else if (e.target.textContent == "-") {
         operator =subtract;
-        console.log(operator);
     }else if (e.target.textContent == "*") {
         operator =multiply;
-        console.log(operator);
     }else if (e.target.textContent == "/") {
         operator =divide;
-        console.log(operator);
-    }
-    console.log(operator);
-    console.log(typeof operator);
+    }    
     return operator;
 } 
 
 function operate(opt, num1, num2) {    
     opt = operator;
     num1 = storedValue;
-    num2 = storedValue1;
-    console.log(num1, num2);
+    num2 = storedValue1;    
     display.textContent = opt(num1, num2);
     displayValue=  display.textContent;
     storedValue= Number(displayValue);
