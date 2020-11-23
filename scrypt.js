@@ -26,7 +26,7 @@ let displayValue1 = "";
 let storedValue = "";
 let storedValue1 = "";
 let operator = "";
-
+let miniDisplay = document.getElementById("minidisplay");
 
 //Functions
 
@@ -95,12 +95,15 @@ function populateDisplay(e){
     // filling display with numbers    
     if(typeof storedValue == "string") {
         displayValue = displayValue + e.target.textContent;
-        if (displayValue.length > 15) {            
-            displayValue=displayValue.substring(0,15);
+        
+        //limit the the number of entered digits for num1
+        if (displayValue.length > 13) {            
+            displayValue=displayValue.substring(0,13);
         }
         if(window.outerWidth <= 500) {
-            displayValue=displayValue.substring(0,10);
+            displayValue=displayValue.substring(0,9);
         }
+
         display.textContent= displayValue;
         // not allow making 2 comas
         onlyOneComma ();
@@ -108,20 +111,20 @@ function populateDisplay(e){
     else {
         
         displayValue1 = displayValue1 + e.target.textContent;
-        if (displayValue1.length > 15) {
+
+        //limit the the number of entered digits for num2
+        if (displayValue1.length > 13) {
             
-            displayValue1=displayValue1.substring(0,15);
+            displayValue1=displayValue1.substring(0,13);
         }
         if(window.outerWidth < 500) {
-            displayValue1=displayValue1.substring(0,10);
+            displayValue1=displayValue1.substring(0,9);
         }
         display.textContent = displayValue1;
         storedValue1 =Number(displayValue1);
         // not allow making 2 comas
         onlyOneComma ();
-   }
- 
-    
+   }    
 }
 
 function addOperator(e) {
@@ -132,7 +135,7 @@ function addOperator(e) {
     }
     storedValue = Number(displayValue);
     
-    if (e.target.textContent == "+") {
+    if (e.target.textContent == "+" )  {
         operator = add;
     }else if (e.target.textContent == "-") {
         operator =subtract;
@@ -153,6 +156,7 @@ function operate(opt, num1, num2) {
     storedValue= Number(displayValue);
     displayValue1="";
     dealBigNumbers();
+    miniDisplay.textContent= num1 + optSign() + num2;
 }
 
 function clear(e) {
@@ -165,6 +169,7 @@ function onlyOneComma (){
     }
 }
 
+// dealing with big numbers
 function dealBigNumbers() {
     let result = display.textContent;        
     let resultArray = result.split("");
@@ -172,7 +177,7 @@ function dealBigNumbers() {
     let chComa = resultArray.filter(el => el != ".");
     chComa.splice( 1, 0, ".");
     let newRes = chComa.join("");
-    let finRes = newRes.substring(0,12); 
+    let finRes = newRes.substring(0,10); 
 
     //limit number size display 
     if ( result >= 10000000000000000000 ){
@@ -181,9 +186,9 @@ function dealBigNumbers() {
     }
     // making some responsiveness
     if (window.outerWidth>500) {
-        if (result.length>15 && commaIndex < 12 && commaIndex > 0) {    
+        if (result.length>13 && commaIndex < 10 && commaIndex > 0) {    
             display.textContent = display.textContent.substring(0,15)
-        }else if (result.length>15 && (commaIndex >= 12 || commaIndex < 0)){
+        }else if (result.length>13 && (commaIndex >= 10 || commaIndex < 0)){
             // deal with integers and decimal numbers
             if (commaIndex< 0) {
                 display.textContent = finRes + "e" + "+" +(result.length-1);
@@ -212,4 +217,34 @@ function dealBigNumbers() {
         }
     }
     
+}
+
+
+// adding keyboard support 
+
+function keyboardInput(e) {
+    let code = e.keyCode;
+    //dealing with shiftKeys (+ and *)
+    if (e.shiftKey && e.keyCode == 56) {     
+            code = 42;
+    }else if (e.shiftKey && e.keyCode == 61) {
+            code = 43
+    }
+    e.preventDefault(); //prevents default keyboard shortcuts on browser
+    const key = document.querySelector(`button[data-key="${code}"]`); // letter keyboard
+    const num = document.querySelector(`button[data-num="${code}"]`); // numeric keyboard
+    
+    if (key) key.click();  // click on key element
+    else if(num) num.click();  // click on num element
+    else return;
+}
+window.addEventListener("keydown", keyboardInput);
+
+// getting operator sign for miniDisplay
+function optSign(opt) {
+    if (operator == add) return "+";
+    else if (operator == subtract) return "-";
+    else if (operator == divide) return "/";
+    else if (operator == multiply) return "*";
+    else return;
 }

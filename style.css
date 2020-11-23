@@ -64,8 +64,10 @@ header {
     /* width: 2%; */
     border-radius: 10px;
     font-size: xx-large;
-    margin:2px;
-    
+    margin:2px;    
+}
+.press {
+    transform: scale(1.2 );
 }
 .num {
     background-color: #003865;
