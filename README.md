@@ -24,6 +24,8 @@ To get  a local copy, copy up and run:
     1. Clone the repo or download the Zip folder
     2. Run live server or simply open the index.html file with a browser
 
+To run it online just click on [Live Demo Link](https://shinobiwarior.github.io/Calculator/)
+
 ## Author
 
 👤 **Aleksandar Ivezic**
