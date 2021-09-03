@@ -1,7 +1,7 @@
 # Calculator
 
 > The Odin JS Project: Calculator -
-The goal of this project is to build a Calculator app that will be functional for the basic mathematical operations.
+The goal of this project is to build a Calculator app that will be functional for basic mathematical operations.
 
 ![screenshot](./Screenshot-Calculator.png)
 
